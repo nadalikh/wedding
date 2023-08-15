@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+    @font-face {
+        font-family: shekasteh;
+        /* font-weight: 400; */
+        /* font-size: 20px;*/
+        src: url(../../public/Shekasteh.ttf) format("truetype");
+    }
+}
+
+@layer base {
+    @font-face {
+        font-family: nast;
+        /* font-weight: 400; */
+        /* font-size: 20px;*/
+        src: url(../../public/IranNastaliq.ttf) format("truetype");
+    }
+}
+@layer base {
+    @font-face {
+        font-family: persian;
+        /* font-weight: 400; */
+        /* font-size: 20px;*/
+        src: url(../../public/persian.ttf) format("truetype");
+    }
+}
+
+h1{
+    font-family: shekasteh, serif;
+}
+
+.intro * {
+    font-family: nast, serif;
+
+}
+.date * {
+    font-family: persian, serif;
+}
+.invite *{
+    font-family: persian, serif;
+
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+.ms-card{
+    box-shadow: 3px 3px 10px black;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    /*border: 1px solid #fdff6e;*/
+}
+
+.ms-card::-webkit-scrollbar{
+    display:none;
+}
+
+.ms-darkBackground{
+    background: linear-gradient(45deg, #746d1738, #013a05b0)
+}
+video {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
