@@ -6,6 +6,8 @@
 
 import axios from 'axios';
 import 'flowbite';
+import $ from "jquery";
+import Swal from 'sweetalert2';
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -43,35 +45,70 @@ function toPersian(number){
     number = number.replace("7", "۷")
     number = number.replace("8", "۸")
     number = number.replace("9", "۹")
-    console.log(number);
     return number
 }
 
-var d1 = new Date(now)
-var d2 = new Date("2023-09-22 19:00:00")
-var dif = d2 - d1;
-var dayEl = document.getElementById("day")
-var minEl = document.getElementById("min")
-var hourEl = document.getElementById("hour")
-var secEl = document.getElementById("sec")
-// To calculate the time difference of two dates
-setInterval(function () {
-    dif -= 1000;
-    var hour ,  min , day ;
-    hour = min = day = 0;
-    var sec = Math.floor(dif/1000)
-    min += Math.floor(sec / 60)
-    sec %= 60
-    hour += Math.floor(min / 60)
-    min %= 60
-    day += Math.floor(hour / 24)
-    hour %= 24
-    day %= 365
-    // console.log(date1,"sec: "+sec, "min: " + min,"hour: " + hour ,"day: " + day);
-    dayEl.setAttribute("style","--value:"+day+";")
-    minEl.setAttribute("style","--value:"+min+";")
-    hourEl.setAttribute("style","--value:"+hour+";")
-    secEl.setAttribute("style","--value:"+sec+";")
-}, 1000);
+$(".link_copy").on('click', function(){
+    navigator.clipboard.writeText(this.value);
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'لینک کپی شد',
+        showConfirmButton: false,
+        timer: 1500
+    })
+});
+
+if (typeof error !== 'undefined') {
+    Swal.fire({
+        title: error,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        timer: 2000,
+        showConfirmButton: false,
+        icon: 'error'
+    })
+}
+if (typeof success !== 'undefined') {
+    Swal.fire({
+        title: success,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        timer: 2000,
+        showConfirmButton: false,
+        icon: 'success'
+    })
+}
+if (typeof success_ok !== 'undefined') {
+    Swal.fire({
+        title: success_ok,
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        },
+        showConfirmButton: true,
+        icon: 'success'
+    })
+}
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    $(".preloader").addClass("hidden")
+});
+
+
+
+
+
 
 

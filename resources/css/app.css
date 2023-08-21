@@ -1,3 +1,4 @@
+@import "font-awesome/css/font-awesome.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -42,16 +43,26 @@ h1{
     font-family: persian, serif;
 
 }
+label{
+    font-family: persian, serif;
+}
+
+input, table *, .ms-font{
+    font-family: persian, serif;
+}
+
 
 html, body{
     margin: 0;
     padding: 0;
 }
+
 .ms-card{
-    box-shadow: 3px 3px 10px black;
+    /*box-shadow: 3px 3px 10px black;*/
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
-    /*border: 1px solid #fdff6e;*/
+    border: 1px solid whitesmoke;
+    background: linear-gradient(45deg, #340000,#34000000, #340000)
 }
 
 .ms-card::-webkit-scrollbar{
@@ -69,4 +80,7 @@ video {
     height: 100%;
     width: 100%;
     z-index: -1;
+}
+hr{
+    background: linear-gradient(95deg, #24eb0000,#2db102, transparent);
 }

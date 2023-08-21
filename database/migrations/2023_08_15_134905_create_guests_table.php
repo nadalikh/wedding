@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
-            $table->enum('from', ["bride", "groom"])->nullable();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnUpdate();
             $table->string('mobile')->unique();
-            $table->boolean('withFamily')->nullable();
-            $table->enum('sex', ["male", "female"])->default("male");
+            $table->integer('quantity')->nullable();
+            $table->tinyInteger('withFamily')->nullable();
+            $table->boolean('called')->default(false);
+            $table->enum('from', ["bride", "groom"])->nullable();
+            $table->boolean('sentSms')->default(false);
+            $table->enum('gender', ["male", "female"])->default("male");
             $table->string('name')->nullable();
             $table->timestamps();
         });

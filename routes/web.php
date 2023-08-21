@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('invite/{guest:mobile}', [\App\Http\Controllers\RouteController::class, "welcome"])->missing(function (){
+    return abort(404);
+})->name("invite");
 
-Route::post('addUser', [\App\Http\Controllers\UserController::class, "addUser"]);
-Route::post('changePassword/{user}', [\App\Http\Controllers\UserController::class, "changePassword"]);
-Route::post('makeTheGod', [\App\Http\Controllers\UserController::class, "makeTheGod"]);
+Route::get("admin", [\App\Http\Controllers\RouteController::class, "admin"])->middleware('auth')->name('admin');
+Route::get("login", [\App\Http\Controllers\RouteController::class, "login"])->name('login');
 
+Route::post("login", [\App\Http\Controllers\UserController::class, "login"])->name('admin.login');
+Route::get("logout", [\App\Http\Controllers\UserController::class, "logout"])->name('admin.logout');
+Route::post('guest', [\App\Http\Controllers\GuestController::class, 'store'])->name("guest.store")->middleware('auth');
+Route::get('sendSms/{mobile}', [\App\Http\Controllers\GuestController::class, 'sendSms'])->name("guest.sendSms")->middleware("auth");
+Route::get('callTrigger/{guest:mobile}', [\App\Http\Controllers\GuestController::class, 'callTrigger'])->name("guest.callTrigger")->middleware("auth");

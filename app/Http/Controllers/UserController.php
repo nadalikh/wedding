@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -14,9 +16,9 @@ class UserController extends Controller
         try {
             $body["password"] = Hash::make($body['password']);
             User::create($body);
-            return back()->with("success", "یوزر ساختیم ایول");
+            return response()->json(["success" => "یوزر ساختیم ایول"]);
         }catch (\Exception $e){
-            return back()->withErrors(["نشد یوزر بسازیم"]);
+            return response()->json(["error" => "نشد یوزر بسازیم"]);
         }
     }
     public function changePassword(Request $request, User $user){
@@ -24,17 +26,30 @@ class UserController extends Controller
         $body['password'] = Hash::make($body['password']);
         try {
             $user->updateOrFail($body);
-            return back()->with('success', "پسوردو با موفقیت اپدیت کردم");
+            return response()->json(['success' => "پسوردو با موفقیت اپدیت کردم"]);
         }catch (\Exception $e){
-            return back()->withErrors("نتونستم پسوردتو اپدیت کنم");
+            return response()->json(["error" => "نتونستم پسوردتو اپدیت کنم"]);
         }
     }
     public function makeTheGod(){
         $user = User::create([
-            "mobile" => "09394241452",
+            "mobile" => "09000000000",
             "password" => Hash::make("510152000"),
             "role" => "God"
         ]);
+        return response()->json(['success' => $user]);
+
+    }
+
+    public function login(LoginRequest $request){
+        if(Auth::attempt($request->only('mobile', "password")))
+            return redirect(route('admin'));
+        return back()->withErrors(["موبایل یا پسورد غلط است"]);
+
+    }
+    public function logout(){
+        Auth::logout();
+        return back()->with("success", "شما با موفقیت خارج شدید");
     }
 
 

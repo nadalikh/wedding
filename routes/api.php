@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('addUser', [\App\Http\Controllers\UserController::class, "addUser"]);
+Route::post('changePassword/{user}', [\App\Http\Controllers\UserController::class, "changePassword"]);
+Route::post('makeTheGod', [\App\Http\Controllers\UserController::class, "makeTheGod"]);
+
