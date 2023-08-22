@@ -21,7 +21,7 @@
 
 
     </div>
-    <div class="ms-card backdrop-filter backdrop-blur-lg  lg:w-1/2 h-[80vh] sm:w-5/6 w-full mx-auto rounded-lg  absolute position left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-y-scroll">
+    <div class="ms-card mx-[3px] backdrop-filter backdrop-blur-lg  lg:w-1/2 h-[80vh] sm:w-5/6 w-5/6 rounded-lg  absolute position left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-y-scroll">
         <button id="music"><i class="fa fa-music text-white p-5"></i></button>
         <div class="intro">
             <p class="text-white mt-3 text-6xl text-center m-auto ">نادعلی  <img class="inline px-2 " width="60" height="60" src="{{asset("icons8-love-50.png")}}" alt="two-hearts"/> سارا</p>

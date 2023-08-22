@@ -64,7 +64,8 @@ class GuestController extends Controller
      */
     public function destroy(Guest $guest)
     {
-        //
+        $guest->deleteOrFail();
+        return back()->with("success", "با موفقیت حذف شد");
     }
 
     public function sendSms(Guest $guest){
@@ -90,6 +91,8 @@ class GuestController extends Controller
             curl_exec($curl);
             $err = curl_error($curl);
             curl_close($curl);
+            $guest->sentSms = !$guest->sentSms;
+            $guest->updateOrFail();
         }catch (\Exception $e ){
             dd($e->getMessage());
         }

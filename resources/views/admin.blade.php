@@ -109,6 +109,7 @@
             <th>وضعیت تماس</th>
             <th>وضعیت ارسال</th>
             <th>لینک دعوت</th>
+            <th>حذف</th>
         </tr>
         </thead>
         <tbody>
@@ -123,6 +124,7 @@
                     <td class="text-center {{($guest->called) ? "pointer-events-none" : ""}}"><a href="{{(!$guest->called) ? route('guest.callTrigger', ['guest' => $guest->mobile]) : ""}}"><i class="fa fa-phone {{($guest->called) ? "" : "text-green-600"}}"></i></a></td>
                     <td class="text-center {{($guest->sentSms) ? "pointer-events-none" : ""}}"><a href="{{(!$guest->sentSms) ? route('guest.sendSms', ['guest' => $guest->mobile]) : ""}}"><i class="fa fa-send {{($guest->sentSms) ? "" : "text-green-600"}}"></i></a></td>
                     <td class="text-center"><button class="link_copy" value="{{route('invite', ['guest' => $guest->mobile])}}"><i class="fa fa-link text-green-600"></i></button></td>
+                    <td class="text-center"><a  href="{{route('guest.destroy', ['guest' => $guest])}}"><i class="fa fa-remove text-red-600"></i></a></td>
                 </tr>
             @endforeach
         </tbody>

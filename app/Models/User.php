@@ -70,4 +70,8 @@ class User extends Authenticatable
             "God" => Guest::where('called', false)->get()
         };
     }
+
+    public function allGuestsQuantities(){
+        return Guest::sum('quantity');
+    }
 }
