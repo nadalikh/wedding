@@ -1,3 +1,4 @@
+import $ from "jquery";
 var d1 = new Date(now)
 var d2 = new Date("2023-09-22 19:00:00")
 var dif = d2 - d1;
@@ -24,3 +25,13 @@ setInterval(function () {
     hourEl.setAttribute("style","--value:"+hour+";")
     secEl.setAttribute("style","--value:"+sec+";")
 }, 1000);
+
+const audio = document.getElementById("audio")
+$("#music").on("click", function(){
+    console.log(audio.paused);
+     if(audio.paused)
+        audio.play();
+     else
+         audio.pause();
+})
+

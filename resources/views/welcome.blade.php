@@ -1,28 +1,28 @@
 @extends('inviteMaster')
 @section("content")
-{{--<audio  autoplay loop >--}}
-{{--    <source src="{{asset("shad.mp3")}}" >--}}
-{{--    Your browser does not support the audio element.--}}
-{{--</audio>--}}
+    <audio id="audio"  loop>
+        <source src="{{asset("shad.mp3")}}" >
+        Your browser does not support the audio element.
+    </audio>
 
     <div class="w-full h-[100vh] relative overflow-hidden text-center flex items-center justify-center">
         <div class="preloader w-full h-full bg-white z-10">
             <img class="absolute position left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            src="{{asset("icons8-wedding.gif")}}">
+                 src="{{asset("icons8-wedding.gif")}}">
         </div>
 
-        <video autoplay loop >
+        <video autoplay loop muted>
             <source src="{{asset("my-video.mp4")}}">
             Your browser does not support the video tag.
         </video>
-{{--        <div class="ms-background w-full h-[100vh] absolute blur-sm ">--}}
-{{--            <div class="ms-darkBackground w-full h-full"></div>--}}
-{{--        </div>--}}
+        {{--        <div class="ms-background w-full h-[100vh] absolute blur-sm ">--}}
+        {{--            <div class="ms-darkBackground w-full h-full"></div>--}}
+        {{--        </div>--}}
 
 
     </div>
     <div class="ms-card backdrop-filter backdrop-blur-lg  lg:w-1/2 h-[80vh] sm:w-5/6 w-full mx-auto rounded-lg  absolute position left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-y-scroll">
-
+        <button id="music"><i class="fa fa-music text-white p-5"></i></button>
         <div class="intro">
             <p class="text-white mt-3 text-6xl text-center m-auto ">نادعلی  <img class="inline px-2 " width="60" height="60" src="{{asset("icons8-love-50.png")}}" alt="two-hearts"/> سارا</p>
         </div>
@@ -36,7 +36,7 @@
         <h1 class="lg:text-2xl md:text-xl sm:text-xl text-white text-center m-auto p-3">دست در دست هم نهاده ایم</h1>
         <h1 class="lg:text-2xl md:text-xl sm:text-xl text-white text-center m-auto p-3 ">و در سپیده دم بزرگترین رویداد زندگی</h1>
         <h1 class="lg:text-2xl md:text-xl sm:text-xl text-white text-center m-auto p-3 ">جشن کوچکی اراستیم و شوق فشردن دستان شما</h1>
-{{--        <h1 class="lg:text-2xl md:text-xl sm:text-xl text-white text-center m-auto p-3 "></h1>--}}
+        {{--        <h1 class="lg:text-2xl md:text-xl sm:text-xl text-white text-center m-auto p-3 "></h1>--}}
         <h1 class="lg:text-2xl md:text-xl sm:text-xl text-white text-center m-auto p-3 ">برایمان انتظاری است شیرین</h1>
 
         <div class="m-auto mt-14 grid grid-flow-col gap-5 text-center items-center justify-center auto-cols-max">

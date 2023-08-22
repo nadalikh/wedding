@@ -121,7 +121,7 @@
                     <td class="text-center">{{($guest->withFamily == 0) ? "بدون همراه" : (($guest->withFamily == 1) ? "با خانواده" : "با بانو")}}</td>
                     <td class="text-center">{{($guest->gender == "male") ? "مرد" : "زن"}}</td>
                     <td class="text-center {{($guest->called) ? "pointer-events-none" : ""}}"><a href="{{(!$guest->called) ? route('guest.callTrigger', ['guest' => $guest->mobile]) : ""}}"><i class="fa fa-phone {{($guest->called) ? "" : "text-green-600"}}"></i></a></td>
-                    <td class="text-center {{($guest->sentSms) ? "pointer-events-none" : ""}}"><a href="{{(!$guest->sentSms) ? route('guest.sendSms', ['mobile' => $guest->mobile]) : ""}}"><i class="fa fa-send {{($guest->sentSms) ? "" : "text-green-600"}}"></i></a></td>
+                    <td class="text-center {{($guest->sentSms) ? "pointer-events-none" : ""}}"><a href="{{(!$guest->sentSms) ? route('guest.sendSms', ['guest' => $guest->mobile]) : ""}}"><i class="fa fa-send {{($guest->sentSms) ? "" : "text-green-600"}}"></i></a></td>
                     <td class="text-center"><button class="link_copy" value="{{route('invite', ['guest' => $guest->mobile])}}"><i class="fa fa-link text-green-600"></i></button></td>
                 </tr>
             @endforeach
